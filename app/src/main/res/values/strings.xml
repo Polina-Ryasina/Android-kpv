@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SecondHomework</string>
+    <string name="blankError">Все поля должны быть заполнены!</string>
+    <string name="emailError">Введен некорректный адрес почты</string>
+    <string name="passwordError">Введенный пароль слишком короткий</string>
+    <string name="login">🌟Войти🌟</string>
+    <string name="visibilityOff">Скрыть пароль</string>
+    <string name="visibilityOn">Показать пароль</string>
+    <string name="zeroNotes">Пока пусто! 😃</string>
+    <string name="thirdScreen">Новая заметка ✍️</string>
+    <string name="blankTitle">Введите название заметки</string>
+    <string name="title">Заголовок</string>
+    <string name="text">Содержание</string>
+    <string name="saveButton">Сохранить</string>
+    <string name="email">Сюда email!</string>
+    <string name="password">А сюда пароль...</string>
+    <string name="dropdown">Выберите цветовую тему 🎨</string>
+</resources>
