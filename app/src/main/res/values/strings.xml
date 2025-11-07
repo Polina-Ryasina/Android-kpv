@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">AndroidCourse</string>
+    <string name="notification_settings">Настройки уведомления</string>
+    <string name="title_label">Заголовок (обязательно)</string>
+    <string name="body_label">Текст уведомления (опционально)</string>
+    <string name="expand_long_text">Разворачивать длинный текст</string>
+    <string name="expand_hint">Для включения нужно заполнить текст уведомления</string>
+    <string name="priority">Приоритет</string>
+    <string name="open_main">Открыть приложение при нажатии</string>
+    <string name="add_reply">Добавить кнопку ответа (Reply)</string>
+    <string name="create_notification">Создать уведомление</string>
+    <string name="title_error">Заголовок не может быть пустым</string>
+    <string name="notification_created">Уведомление создано</string>
+    <string name="reply_label">Введите ответ...</string>
+    <string name="reply_action_text">Ответить</string>
+    <string name="edit_notification">Редактирование уведомлений</string>
+    <string name="update_notification">Обновить уведомление</string>
+    <string name="clear_notifications">Очистить все уведомления</string>
+    <string name="clear">Все уведомления удалены</string>
+    <string name="nothing_to_clear">Уведомлений нет</string>
+    <string name="invalid_id">Некорректный ID</string>
+    <string name="notification_updated">Уведомление обновлено</string>
+    <string name="notification_not_found">Уведомление с таким ID не найдено</string>
+    <string name="reply_saved">Ответ сохранён</string>
+    <string name="blank"></string>
+    <string name="reply_empty">Ответ не может быть пустым</string>
+    <string name="id">ID (обязательно)</string>
+    <string name="id_error">Введите ID уведомления</string>
+    <string name="add_message">Добавить</string>
+    <string name="message_error">Сообщение не может быть пустым</string>
+    <string name="notification_permission_granted">Разрешение на уведомления получено</string>
+    <string name="notification_permission_denied">Невозможно показать уведомления без разрешения</string>
+
 </resources>
