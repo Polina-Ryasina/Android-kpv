@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AndroidCourse</string>
+    <string name="title_coroutine_control">Контроль корутин</string>
+    <string name="label_count">Количество: %1$d</string>
+    <string name="label_sequential">Последовательно</string>
+    <string name="label_parallel">Параллельно</string>
+    <string name="label_delayed_start">Отложенный старт</string>
+    <string name="label_background_work">Работа в фоне</string>
+    <string name="btn_start">Старт</string>
+    <string name="btn_stop">Остановить</string>
+    <string name="error_toast">Toast ошибка</string>
+    <string name="error_snackbar">Snackbar ошибка</string>
+    <string name="error_reset">Сброс</string>
+    <string name="msg_cancelled">Отменено: %1$d</string>
 </resources>
