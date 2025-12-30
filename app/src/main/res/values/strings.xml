@@ -1,3 +1,71 @@
 <resources>
-    <string name="app_name">AndroidCourse</string>
+    <string name="app_name">Room</string>
+
+    <string name="register_title">Регистрация</string>
+    <string name="email_label">Email</string>
+    <string name="nickname_label">Никнейм</string>
+    <string name="password_label">Пароль</string>
+    <string name="confirm_password_label">Подтвердите пароль</string>
+    <string name="register_button">Зарегистрироваться</string>
+    <string name="login_text">Уже есть аккаунт? Войти</string>
+    <string name="error_required_fields">Должны быть заполнены все обязательные поля!</string>
+    <string name="error_invalid_email">Неверный формат email!</string>
+    <string name="error_password_mismatch">Пароли не совпадают!</string>
+    <string name="error_password_short">Длина пароля должна быть не менее 8 символов!</string>
+    <string name="error_email_exists">Аккаунт с таким email уже существует!</string>
+    <string name="toggle_password_visibility">Показать/Скрыть пароль</string>
+    <string name="toggle_confirm_password_visibility">Показать/Скрыть подтверждение пароля</string>
+
+    <string name="error_invalid_pair">Неверный email или пароль!</string>
+    <string name="login_title">Вход</string>
+    <string name="login_button">Войти</string>
+    <string name="register_text">Нет аккаунта? Зарегистрироваться</string>
+
+    <string name="dropdown_class_label">Класс</string>
+    <string name="dropdown_race_label">Раса</string>
+    <string name="number_input_decrease_button">-</string>
+    <string name="number_input_increase_button">+</string>
+    <string name="add_item_name_label">Имя персонажа</string>
+    <string name="add_item_level_label">Уровень: </string>
+    <string name="add_item_strength_label">Сила: </string>
+    <string name="add_item_agility_label">Ловкость: </string>
+    <string name="add_item_intelligence_label">Интеллект: </string>
+    <string name="add_item_description_label">Описание (необязательно)</string>
+    <string name="add_button_label">Добавить персонажа</string>
+    <string name="error_fill_all_required_fields">Заполните все обязательные поля!</string>
+    <string name="error_level_must_be_number">Уровень должен быть числом!</string>
+    <string name="default_parameter_value">5</string>
+    <string name="default_level_value">3</string>
+
+    <string name="card_profession">%s • %s • Уровень: %s</string>
+    <string name="card_parameters">Сила: %s • Ловкость: %s • Интеллект: %s</string>
+    <string name="card_description">Описание: %s</string>
+
+    <string name="filters">Фильтрация</string>
+    <string name="sort">Сортировка</string>
+    <string name="without_sort">Без сортировки</string>
+    <string name="back">Назад</string>
+
+    <string name="characters">Персонажи</string>
+    <string name="no_characters">Персонажей еще нет</string>
+
+    <string name="profile">Профиль</string>
+    <string name="empty">Пользователь</string>
+    <string name="profile_label">Привет, %s!</string>
+    <string name="added_characters">Добавленные персонажи: %s</string>
+    <string name="no_user_characters">Вы еще не добавили персонажей</string>
+    <string name="delete_button">Удалить аккаунт</string>
+    <string name="logout_button">Выйти</string>
+    <string name="not_login_user">Пользователь не авторизован</string>
+
+    <string name="account_deleted_title">Аккаунт удален</string>
+    <string name="account_deleted_message">Ваш аккаунт был удален. Вы можете восстановить его в течение 7 дней с момента удаления или удалить окончательно</string>
+    <string name="account_deleted_warning">Ваш аккаунт будет удален. Вы сможете восстановить его в течение 7 дней с момента удаления.</string>
+    <string name="restore_account">Восстановить</string>
+    <string name="delete_permanently">Удалить навсегда</string>
+    <string name="delete_account">Удалить аккаунт?</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
+
+
 </resources>
