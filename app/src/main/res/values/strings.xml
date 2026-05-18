@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">AndroidCourse</string>
+
+    <string name="game_details_title">Детали игры</string>
+    <string name="back_button">Назад</string>
+    <string name="no_game_selected">Игра не выбрана</string>
+    <string name="released_label">Дата выхода: %1$s</string>
+    <string name="rating_label">Рейтинг: %1$s (%2$s)</string>
+    <string name="platforms_label">Платформы: %1$s</string>
+    <string name="genres_label">Жанры: %1$s</string>
+    <string name="developers_label">Разработчики: %1$s</string>
+    <string name="publishers_label">Выпускали: %1$s</string>
+
+    <string name="game_name_label">Название игры</string>
+    <string name="search_button">Поиск</string>
+    <string name="enter_game_name">Введите игру</string>
+    <string name="loaded_from">Загружено из: %1$s</string>
+    <string name="error_label">Ошибка: %1$s</string>
+
+    <string name="unknown_error">Произошла ошибка 😳. Попробуйте позже!</string>
+    <string name="no_games_found">Игры не найдены((</string>
+    <string name="network_error">Соединение не стабильно.. Проверьте подключение!</string>
+    <string name="timeout_error">Превышен лимит ожидания! Попробуйте позже...</string>
 </resources>
