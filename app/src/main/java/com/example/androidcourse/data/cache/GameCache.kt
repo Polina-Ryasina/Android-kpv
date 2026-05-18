@@ -41,4 +41,15 @@ open class GameCache(private val context: Context, private val lifeSeconds: Long
         map[query] = CachedEntry(data, now())
         file.writeText(gson.toJson(map))
     }
+
+    suspend fun getById(id: Int): Game? {
+        val file = cacheFile()
+        if (!file.exists()) return null
+        val json = file.readText()
+        val map: Map<String, CachedEntry> = gson.fromJson(json, type) ?: return null
+        return map.values
+            .filter { now() - it.timestamp <= lifeSeconds * 1000 }
+            .flatMap { it.data }
+            .firstOrNull { it.id == id }
+    }
 }

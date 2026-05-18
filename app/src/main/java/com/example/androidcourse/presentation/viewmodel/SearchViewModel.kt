@@ -6,14 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.androidcourse.R
 import com.example.androidcourse.data.constants.ErrorConstants
 import com.example.androidcourse.domain.model.Game
-import com.example.androidcourse.domain.usecase.FakeSearchGamesUseCase
 import com.example.androidcourse.domain.usecase.SearchGamesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val searchUseCase: SearchGamesUseCase // Для ошибки - FakeSearchGamesUseCase
+    private val searchUseCase: SearchGamesUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<State>(State.Empty)

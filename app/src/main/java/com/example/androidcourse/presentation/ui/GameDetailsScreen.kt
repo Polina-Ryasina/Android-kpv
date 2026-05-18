@@ -19,6 +19,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -35,7 +37,7 @@ fun GameDetailsScreen(
     viewModel: DetailsViewModel,
     onBack: () -> Unit
 ) {
-    val game = viewModel.game
+    val game by viewModel.game.collectAsState()
 
     Scaffold(
         topBar = {
@@ -49,7 +51,9 @@ fun GameDetailsScreen(
             )
         }
     ) { padding ->
-        if (game == null) {
+        val currentGame = game
+
+        if (currentGame == null) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -68,8 +72,8 @@ fun GameDetailsScreen(
                 .padding(padding)
         ) {
             AsyncImage(
-                model = game.backgroundImage,
-                contentDescription = game.name,
+                model = currentGame.backgroundImage,
+                contentDescription = currentGame.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -78,11 +82,11 @@ fun GameDetailsScreen(
             Spacer(Modifier.height(12.dp))
 
             Text(
-                text = game.name,
+                text = currentGame.name,
                 style = MaterialTheme.typography.headlineMedium
             )
 
-            game.released?.orHideUnknown()?.let { released ->
+            currentGame.released?.orHideUnknown()?.let { released ->
                 Text(
                     text = stringResource(R.string.released_label, released),
                     style = MaterialTheme.typography.bodyMedium
@@ -90,11 +94,11 @@ fun GameDetailsScreen(
             }
 
             Text(
-                text = stringResource(R.string.rating_label, game.rating, game.ratingTop),
+                text = stringResource(R.string.rating_label, currentGame.rating, currentGame.ratingTop),
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            val platforms = game.platforms.filterUnknown()
+            val platforms = currentGame.platforms.filterUnknown()
             if (platforms.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.platforms_label, platforms.joinToString(", ")),
@@ -102,7 +106,7 @@ fun GameDetailsScreen(
                 )
             }
 
-            val genres = game.genres.filterUnknown()
+            val genres = currentGame.genres.filterUnknown()
             if (genres.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.genres_label, genres.joinToString(", ")),
@@ -110,7 +114,7 @@ fun GameDetailsScreen(
                 )
             }
 
-            val developers = game.developers.filterUnknown()
+            val developers = currentGame.developers.filterUnknown()
             if (developers.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.developers_label, developers.joinToString(", ")),
@@ -119,7 +123,7 @@ fun GameDetailsScreen(
             }
 
 
-            val publishers = game.publishers.filterUnknown()
+            val publishers = currentGame.publishers.filterUnknown()
             if (publishers.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.publishers_label, publishers.joinToString(", ")),

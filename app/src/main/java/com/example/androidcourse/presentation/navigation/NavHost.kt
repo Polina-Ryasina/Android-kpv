@@ -2,35 +2,43 @@ package com.example.androidcourse.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.androidcourse.presentation.ui.GameDetailsScreen
 import com.example.androidcourse.presentation.ui.SearchScreen
 import com.example.androidcourse.presentation.viewmodel.DetailsViewModel
 import com.example.androidcourse.presentation.viewmodel.SearchViewModel
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun AppNavHost(
-    navController: NavHostController,
-    searchViewModel: SearchViewModel,
-    detailsViewModel: DetailsViewModel
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
         startDestination = Routes.SEARCH
     ) {
         composable(Routes.SEARCH) {
+            val viewModel: SearchViewModel = koinViewModel()
             SearchScreen(
-                viewModel = searchViewModel,
+                viewModel = viewModel,
                 onNavigateToDetails = { game ->
-                    detailsViewModel.setGame(game)
-                    navController.navigate(Routes.DETAILS)
+                    navController.navigate(Routes.details(game.id))
                 }
             )
         }
-        composable(Routes.DETAILS) {
+
+        composable(
+            route = Routes.DETAILS,
+            arguments = listOf(navArgument("gameId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val gameId = backStackEntry.arguments?.getInt("gameId") ?: return@composable
+            val viewModel: DetailsViewModel = koinViewModel(parameters = { parametersOf(gameId) })
             GameDetailsScreen(
-                viewModel = detailsViewModel,
+                viewModel = viewModel,
                 onBack = { navController.popBackStack() }
             )
         }
