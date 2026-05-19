@@ -21,4 +21,14 @@
     <string name="no_games_found">Игры не найдены((</string>
     <string name="network_error">Соединение не стабильно.. Проверьте подключение!</string>
     <string name="timeout_error">Превышен лимит ожидания! Попробуйте позже...</string>
+
+    <string name="onboarding_title">Добро пожаловать в GameSearch!</string>
+    <string name="onboarding_description">Это приложение позволяет искать игры и просматривать подробную информацию о них.</string>
+    <string name="onboarding_screens_header">📱 Экраны приложения:</string>
+    <string name="onboarding_screens_list">• Поиск игр — введите название и получите список результатов\n• Детали игры — рейтинг, платформы, жанры, разработчики</string>
+    <string name="onboarding_button">Согласен!</string>
+
+    <string name="channel_promo_name">Акции и скидки</string>
+    <string name="channel_auth_name">Авторизация</string>
+    <string name="channel_default_name">Общие</string>
 </resources>

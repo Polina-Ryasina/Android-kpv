@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "936024269884",
+    "project_id": "android-kpv-e98ee",
+    "storage_bucket": "android-kpv-e98ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936024269884:android:db39a9f4b7042d7dba8f39",
+        "android_client_info": {
+          "package_name": "com.example.androidcourse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7zKlGmS-nxDTPlPpxs60mghD--wjrMpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
