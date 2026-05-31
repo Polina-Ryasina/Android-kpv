@@ -23,4 +23,8 @@ class GameRepository(
             return Result.failure(t)
         }
     }
+
+    suspend fun getGameById(id: Int): Game? {
+        return local.getById(id)
+    }
 }

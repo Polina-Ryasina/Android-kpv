@@ -1,5 +1,7 @@
 package com.example.androidcourse
 
+import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,8 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.core.app.ActivityCompat
 import androidx.navigation.compose.rememberNavController
-import com.example.androidcourse.di.ServiceLocator
 import com.example.androidcourse.presentation.navigation.AppNavHost
 
 class MainActivity : ComponentActivity() {
@@ -16,7 +18,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val  serviceLocator = ServiceLocator(applicationContext)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                0
+            )
+        }
 
         setContent {
             Surface(
@@ -24,14 +32,7 @@ class MainActivity : ComponentActivity() {
                 color = MaterialTheme.colorScheme.background
             ) {
                 val navController = rememberNavController()
-                val searchViewModel = serviceLocator.searchViewModel()
-                val detailsViewModel = serviceLocator.detailsViewModel()
-
-                AppNavHost(
-                    navController = navController,
-                    searchViewModel = searchViewModel,
-                    detailsViewModel = detailsViewModel
-                )
+                AppNavHost(navController = navController)
             }
         }
     }

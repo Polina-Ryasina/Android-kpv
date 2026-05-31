@@ -44,7 +44,7 @@ fun SearchScreen(
                     modifier = Modifier.weight(1f)
                 )
                 Button(
-                    onClick = { viewModel.searchGames(query) },
+                    onClick = { viewModel.searchGames(query) }, // throw RuntimeException("Test crash") },
                     enabled = query.isNotBlank()
                 ) {
                     Text(stringResource(R.string.search_button))
