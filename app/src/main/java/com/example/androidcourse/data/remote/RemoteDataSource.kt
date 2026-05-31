@@ -2,10 +2,12 @@ package com.example.androidcourse.data.remote
 
 import com.example.androidcourse.data.constants.ApiConstants
 import com.example.androidcourse.domain.model.Game
+import kotlinx.collections.immutable.persistentListOf
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import kotlinx.collections.immutable.toImmutableList
 
 class RemoteDataSource(private val apiKey: String) {
     private val client = OkHttpClient.Builder()
@@ -32,10 +34,14 @@ class RemoteDataSource(private val apiKey: String) {
                 rating = dto.rating,
                 ratingTop = dto.rating_top,
                 ratingsCount = dto.ratings_count,
-                platforms = dto.platforms?.map { it.platform.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) } ?: listOf(ApiConstants.UNKNOWN_VALUE),
-                genres = dto.genres?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) } ?: listOf(ApiConstants.UNKNOWN_VALUE),
-                developers = dto.developers?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) } ?: listOf(ApiConstants.UNKNOWN_VALUE),
-                publishers = dto.publishers?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) } ?: listOf(ApiConstants.UNKNOWN_VALUE)
+                platforms = dto.platforms?.map { it.platform.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) }?.toImmutableList()
+                    ?: persistentListOf(ApiConstants.UNKNOWN_VALUE),
+                genres = dto.genres?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) }?.toImmutableList()
+                    ?: persistentListOf(ApiConstants.UNKNOWN_VALUE),
+                developers = dto.developers?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) }?.toImmutableList()
+                    ?: persistentListOf(ApiConstants.UNKNOWN_VALUE),
+                publishers = dto.publishers?.map { it.name }?.ifEmpty { listOf(ApiConstants.UNKNOWN_VALUE) }?.toImmutableList()
+                    ?: persistentListOf(ApiConstants.UNKNOWN_VALUE)
             )
         }
     }

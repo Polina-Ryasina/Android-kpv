@@ -24,6 +24,10 @@ fun SearchScreen(
     val state by viewModel.state.collectAsState()
     var query by remember { mutableStateOf("") }
 
+    val onSearchClick = remember(query) {
+        { viewModel.searchGames(query) }
+    }
+
     Scaffold { padding ->
         Column(
             modifier = Modifier
@@ -44,7 +48,7 @@ fun SearchScreen(
                     modifier = Modifier.weight(1f)
                 )
                 Button(
-                    onClick = { viewModel.searchGames(query) }, // throw RuntimeException("Test crash") },
+                    onClick = onSearchClick,
                     enabled = query.isNotBlank()
                 ) {
                     Text(stringResource(R.string.search_button))
@@ -58,9 +62,11 @@ fun SearchScreen(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
                 }
+
                 SearchViewModel.State.Loading -> {
                     CircularProgressIndicator(Modifier.align(Alignment.CenterHorizontally))
                 }
+
                 is SearchViewModel.State.Success -> {
                     LazyColumn(Modifier.fillMaxSize()) {
                         item {
@@ -68,13 +74,16 @@ fun SearchScreen(
                                 Text(stringResource(R.string.loaded_from, s.source))
                             }
                         }
-                        items(s.games) { game ->
-                            GameItem(game) {
-                                onNavigateToDetails(game)
-                            }
+
+                        items(items = s.games, key = { game -> game.id }) { game ->
+                            GameItem(
+                                game = game,
+                                onClick = { onNavigateToDetails(game) }
+                            )
                         }
                     }
                 }
+
                 is SearchViewModel.State.Error -> {
                     val text = s.message ?: stringResource(s.resId ?: R.string.unknown_error)
                     Text(
@@ -96,7 +105,7 @@ private fun GameItem(game: Game, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(onClick = onClick)
             .padding(12.dp)
     ) {
         AsyncImage(
