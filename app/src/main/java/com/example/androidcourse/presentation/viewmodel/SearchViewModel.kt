@@ -1,12 +1,16 @@
 package com.example.androidcourse.presentation.viewmodel
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidcourse.R
 import com.example.androidcourse.data.constants.ErrorConstants
 import com.example.androidcourse.domain.model.Game
 import com.example.androidcourse.domain.usecase.SearchGamesUseCase
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -28,19 +32,31 @@ class SearchViewModel(
             _state.value = State.Loading
             val result = searchUseCase(normalizedQuery)
             _state.value = result.fold(
-                onSuccess = { (games, source) -> State.Success(games, source) },
+                onSuccess = { (games, source) -> State.Success(games.toImmutableList(), source) },
                 onFailure = { throwable ->
                     val errorMessage = throwable.message
+                    android.util.Log.e("SearchVM", "error: $errorMessage", throwable)
                     State.Error(resId = mapErrorToResId(errorMessage))
                 }
             )
         }
     }
 
+    fun clearSearch() {
+        _state.value = State.Empty
+    }
+
     sealed class State {
+        @Stable
         object Empty : State()
+
+        @Stable
         object Loading : State()
-        data class Success(val games: List<Game>, val source: String) : State()
+
+        @Immutable
+        data class Success(val games: ImmutableList<Game>, val source: String) : State()
+
+        @Immutable
         data class Error(val message: String? = null, @StringRes val resId: Int? = null) : State()
     }
 
