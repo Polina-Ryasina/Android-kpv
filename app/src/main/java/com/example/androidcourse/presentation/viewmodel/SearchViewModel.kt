@@ -22,6 +22,9 @@ class SearchViewModel(
     private val _state = MutableStateFlow<State>(State.Empty)
     val state: StateFlow<State> = _state
 
+    private val _chartSectors = MutableStateFlow<List<Pair<Int, Int>>>(emptyList())
+    val chartSectors: StateFlow<List<Pair<Int, Int>>> = _chartSectors
+
     fun searchGames(query: String) {
         val normalizedQuery = query.lowercase().trim()
         if (normalizedQuery.isBlank()) {
@@ -44,6 +47,16 @@ class SearchViewModel(
 
     fun clearSearch() {
         _state.value = State.Empty
+    }
+
+    fun setChartSectors(sectors: List<Pair<Int, Int>>) {
+        val total = sectors.sumOf { it.second }
+        require(total == 100) { "Сумма процентов должна быть равна 100, но получено $total" }
+        _chartSectors.value = sectors
+    }
+
+    fun clearChart() {
+        _chartSectors.value = emptyList()
     }
 
     sealed class State {
